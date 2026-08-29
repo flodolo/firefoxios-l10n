@@ -1,7 +1,5 @@
 name: Import strings
 on:
-  schedule:
-    - cron: "0 13 * * 1,4"
   workflow_dispatch:
     inputs:
       type:
@@ -91,7 +89,6 @@ jobs:
       - run : git config --global user.email "flodolo@users.noreply.github.com"
       - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          token: ${{ secrets.IOS_L10N_TOKEN }}
           path: "l10n_repo"
           commit-message: "Extract new strings (${{ env.current_date }})"
           branch: l10n_automation
